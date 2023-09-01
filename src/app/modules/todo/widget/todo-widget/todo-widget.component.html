@@ -1,0 +1,8 @@
+<h1>Todo Widget</h1>
+
+<app-todo-create-form-ui (create)="onCreate($event)"></app-todo-create-form-ui>
+<ng-container *ngIf="todoList$ | async as todoList">
+  <app-todo-list-ui [todoList]="todoList"
+                    (delete)="onDelete($event)">
+  </app-todo-list-ui>
+</ng-container>

@@ -5,6 +5,8 @@ import { AppComponent } from './app.component';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { EffectsModule } from '@ngrx/effects';
+import { TodoModule } from "./modules/todo/todo.module";
+import {RouterModule} from "@angular/router";
 
 @NgModule({
   declarations: [
@@ -12,6 +14,12 @@ import { EffectsModule } from '@ngrx/effects';
   ],
   imports: [
     BrowserModule,
+    RouterModule.forRoot([
+      {
+        path: '**',
+        redirectTo: ''
+      }
+    ]),
     StoreModule.forRoot({}, {
       runtimeChecks: {
         strictStateImmutability: true,
@@ -19,7 +27,8 @@ import { EffectsModule } from '@ngrx/effects';
       }
     },),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),
-    EffectsModule.forRoot([])
+    EffectsModule.forRoot([]),
+    TodoModule
   ],
   providers: [],
   bootstrap: [AppComponent]
